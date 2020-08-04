@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Intelligent Component Registry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+body{margin-top:20px; background:#eee; }
+
+.file-manager, .Log-manager, .fileupload-manager, filedownload-manager, filevisualization-manager{
+  list-style: none outside none;
+  margin-bottom:10px; margin-top:10px; padding: 0;
+  vertical-align:middle;
+}
+
+.btn_div{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+.onnx-row a {
+  color: #666666;
+  display: block;
+  padding: 5px 0;
+}
+
+.fa-folder{
+  margin-right: 8px;
+  color: #3d4d5d;
+}
+
+.onnx-row{
+  border-bottom: 1px solid #e7eaec;
+}
+
+.box-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+
+    </style>
+</head>
+
+
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="box-content">
+        <div><h3 class="icr_title">Intelligent Component Registry</h3></div>
+        <br>
+        <div class="fileupload-manager">
+            <h4>File Upload</h4>
+            <form action="/" method = "POST" enctype = "multipart/form-data"/>
+                <div style="float:left; margin-right:10px;"><input type = "file" name = "file" size="30"/></div>
+                <div style="float:left; width:140px; margin-left:10px;"><button class="btn btn-primary btn-block"> Upload File</button></div>
+            </form>
+        </div>
+        <br><br>
+
+        <!-- File 폴더 들 -->
+        <div class="file-manager">
+            <h4>File Folders</h4>
+            <script>
+            // 파일 directory 이름
+                var file_list = {{data_list|tojson}};
+                file_list = (String(file_list)).split(',');
+                //document.write(file_list.length);
+
+             // 파일 만든날짜
+                var latest_time_list = {{latest_time|tojson}};
+                latest_time_list = (String(latest_time_list)).split(',');
+                //document.write(latest_time_list.length);
+
+             // 파일 크기
+                var filesize_list = {{file_size|tojson}};
+                filesize_list = (String(filesize_list)).split(',');
+                //document.write(filesize_list.length);
+
+             // path list
+                var download_path_list = {{path_list|tojson}};
+                download_path_list = (String(download_path_list)).split(',');
+                //document.write(download_path_list)
+                //document.write("\n"+download_path_list.length);
+            </script>
+            <table width="100%" style='margin:auto'>
+                <thead><tr><td>File Name</td><td style="text-align:center;">Last Modified</td><td style="text-align:center;">File Size</td><td style="text-align:center;">Description</td></thead></tr>
+                <tbody>
+            <script type="text/javascript">
+            for (var i=0; i<file_list.length ; i++) {
+                document.write("<tr class='onnx-row'>");
+                document.write("<td width='40%'><a href=''><i class='fa fa-folder'></i>"+ file_list[i] +"</a></td><td style='text-align:center;'>"+latest_time_list[i]+"</td><td style='text-align:right;'>"+filesize_list[i]+"</td>");
+                document.write("</tr>");
+            } //end for i
+
+            </script>
+                </tbody>
+            </table>
+        </div> <!-- File-manager -->
+            <br>
+
+        <!-- 파일 다운로드 기능 구현 -->
+        <div class="filedownload-manager">
+            <h4>File Download</h4>
+            <form action = "/filedown" method = "POST" enctype = "multipart/form-data" class="form-inline">
+                <div style="float:left; margin-right:10px;"><input type = "text" placeholder="파일명을 입력하세요." size=30 name = "file" class="form-control"/></div>
+                <div style="float:left; width:140px; margin-left:10px;"><input type = "submit" name = "file" class="btn btn-primary btn-block" value="Download File"/></div>
+            </form>
+        </div>
+        <br><br>
+
+        <!-- 파일 시각화 기능 구현 -->
+        <div class="filevisualization-manager">
+            <h4>File Visualization</h4>
+            <form action = "/visualization" method = "POST" class="form-inline">
+                <div style="float:left; margin-right:10px;"><input type = "text" placeholder="파일명을 입력하세요. (.onnx)" size=30 name = "file" class="form-control"/></div>
+                <div style="float:left; width:140px; margin-left:10px;"><input type = "submit" name = "file" class="btn btn-primary btn-block" value="Visualization File"/></div>
+            </form>
+        </div>
+        <br><br>
+
+        <!-- LOGS 관리 -->
+        <div class="Log-manager">
+            <h4>Logs</h4>
+            <div class="log list">
+                <textarea id="myTxtArea" class="form-control" rows="15" readonly>Log</textarea>
+            </div>
+        </div> <!-- Log-manager -->
+        <script>
+         // 로그 텍스트
+            var log_text = {{log_list|tojson}};
+            log_text = (String(log_text)).split("\n");
+//            documnet.write(log_text)
+
+//            document.write(log_text.length);
+
+         // text area 채우기
+            var x = document.getElementById("myTxtArea");
+            var t = '';
+            for (var i=0; i<log_text.length; i++) {
+                t = t+log_text[i]+'\n';
+            }
+            t = t.replace(/,/g , ''); // 모든 문자열에서 , 제거하기
+            x.innerHTML = t;
+//            document.write(x);
+        </script>
+    </div> <!-- box-content -->
+</div>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
