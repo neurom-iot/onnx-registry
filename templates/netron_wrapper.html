@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Intelligent Component Registry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+body{margin-top:20px; background:#eee; }
+
+.file-manager, .Log-manager, .fileupload-manager, filedownload-manager, filevisualization-manager{
+  list-style: none outside none;
+  margin-bottom:10px; margin-top:10px; padding: 0;
+  vertical-align:middle;
+}
+
+.btn_div{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+.onnx-row a {
+  color: #666666;
+  display: block;
+  padding: 5px 0;
+}
+
+.fa-folder{
+  margin-right: 8px;
+  color: #3d4d5d;
+}
+
+.onnx-row{
+  border-bottom: 1px solid #e7eaec;
+}
+
+.box-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+
+    </style>
+</head>
+
+
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="box-content">
+        <div><h3 class="icr_title">Intelligent Component Registry</h3></div>
+        <br>
+
+        <iframe src="{{ netron_addr }}" width=100% height=700>
+        </iframe>
+        
+    </div> <!-- box-content -->
+</div>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
