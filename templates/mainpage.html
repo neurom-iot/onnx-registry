@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Intelligent Component Registry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+<style type="text/css">
+body{margin-top:20px; background:#eee; }
+
+.file-manager, .Log-manager, .fileupload-manager, filedownload-manager, filevisualization-manager{
+  list-style: none outside none;
+  margin-bottom:10px; margin-top:10px; padding: 0;
+  vertical-align:middle;
+}
+
+.btn_div{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+a:hover{
+    text-decoration:none;
+}
+
+.onnx-row a {
+  color: #666666;
+  display: block;
+  padding: 5px 0;
+}
+
+.fa-folder{
+  margin-right: 8px;
+  color: #3d4d5d;
+}
+
+.onnx-row{
+  border-bottom: 1px solid #e7eaec;
+}
+
+.box-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+}
+
+    </style>
+</head>
+
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="box-content">
+        <div><h3 class="icr_title">Intelligent Component Registry</h3></div>
+        <br>
+        <div class="fileupload-manager">
+            <h4>File Upload</h4>
+            <form action="/" method = "POST" enctype = "multipart/form-data"/>
+                <div style="float:left; margin-right:10px;"><input type = "file" name = "file" size="30"/></div>
+                <div style="float:left; width:140px; margin-left:10px;"><button class="btn btn-primary btn-block"> Upload File</button></div>
+            </form>
+        </div>
+        <br><br>
+<!-- 파일 목록 출력, 다운로드 기능 포함 -->
+        <div class="file-manager">
+            <h4>File Folders</h4>
+            <form action="/download_logupdate">
+            <table class="table" width="100%" style='margin:auto'>
+               <thead>
+                    <tr><th style="text-align:center;">파일명</th><th style="text-align:center;">Latest Modified Time</th><th style="text-align:center;">File Size</th><tr>
+               </thead>
+               <tbody>
+                   {% for name, latest_time, size in zip(file_list, file_latest_time, file_size) %}
+                   <tr>
+                       <td><a href="{{ url_for('test',filename = name) }}">{{ name }}</a></td>
+                       <td>{{ latest_time }}</td>
+                       <td>{{ size }}</td>
+                   </tr>
+                   {% endfor %}
+               </tbody>
+            </table>
+            </form>
+        </div> <!-- File-manager -->
+        <br>
+
+        <!-- 파일 시각화 기능 구현 -->
+        <div class="filevisualization-manager">
+            <h4>File Visualization</h4>
+            <form action = "/visualization" method = "POST" class="form-inline">
+                <div style="float:left; margin-right:10px;"><input type = "text" placeholder="파일명을 입력하세요. (.onnx)" size=30 name = "file" class="form-control"/></div>
+                <div style="float:left; width:140px; margin-left:10px;"><input type = "submit" name = "file" class="btn btn-primary btn-block" value="Visualization File"/></div>
+            </form>
+        </div>
+        <br><br>
+
+        <!-- LOGS 관리 -->
+        <div class="Log-manager">
+            <h4>Logs</h4>
+            <div class="log list">
+                <textarea id="myTxtArea" class="form-control" rows="15" readonly style="text-align:left;">{% for log in log_list %}{{log}}{% endfor %}</textarea>
+            </div>
+        </div> <!-- Log-manager -->
+    </div> <!-- box-content -->
+</div>
+</body>
+</html>

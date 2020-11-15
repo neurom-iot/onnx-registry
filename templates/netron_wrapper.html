@@ -58,9 +58,39 @@ a:hover{
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
+     <form action="/download_logupdate">
     <div class="box-content">
         <div><h3 class="icr_title">Intelligent Component Registry</h3></div>
         <br>
+        <ul class="list-group">
+
+           <li class ='list-group-item active'>
+                <div class="md-v-line"></div>
+                    <font size="4em"> Onnx_Model </font>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+               <a href="{{ url_for('download',filename = models_name) }}"> <font size="4em" color="black">download click</font> </a></li>
+
+            <li class ='list-group-item '>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                    Model_name: {{models_name}}</li>
+
+            <li class ='list-group-item'>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                    Model_division:{{models_type}}</li>
+            <li class ='list-group-item'>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                Lastest modified :{{last_time}} </li>
+
+            <li class ='list-group-item'>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                File Size : {{files_size}} </li>
+            <li class ='list-group-item'>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                INPUT_TYPE : {{input_type}}</li>
+            <li class ='list-group-item'>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                OUTPUT_TYPE  {{output_type}} </li>
+
+        </ul>
 
         <iframe src="{{ netron_addr }}" width=100% height=700>
         </iframe>
