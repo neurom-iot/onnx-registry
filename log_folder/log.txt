@@ -1,0 +1,14 @@
+(20-08-04 15:53:13) | Upload_Success      | rf_iris.onnx | 127.0.0.1 | C:\Users\urse\PycharmProjects\untitled\Intelligent_Component_registry
+(20-09-03 16:03:52) | Upload_Success      | Random_Forest_mnist.onnx | 127.0.0.1 | C:\Users\urse\PycharmProjects\untitled\Intelligent_Component_registry
+(20-10-21 22:46:00) | Upload_Success      | Random_Forest_mnist.onnx | 127.0.0.1 | C:\Users\urse\PycharmProjects\untitled\ONNX_Registry_ver1.1\onnx_folder\
+(20-10-21 22:46:05) | Upload_Success      | rf_iris.onnx | 127.0.0.1 | C:\Users\urse\PycharmProjects\untitled\ONNX_Registry_ver1.1\onnx_folder\
+(20-11-11 18:12:33) | Upload_Success      | lenet-1_snn.onnx | 127.0.0.1 | C:\Users\qlqlx\PycharmProjects\ONNX_Registry_ver1.1\onnx_folder\
+(20-11-11 18:12:42) | Upload_Success      | lenet-1_snn.onnx | 127.0.0.1 | C:\Users\qlqlx\PycharmProjects\ONNX_Registry_ver1.1\onnx_folder\
+(20-11-18 03:37:09) | Inference Server ON     | 127.0.0.1 | 
+(20-11-18 04:02:25) | download_Success    | logreg_iris.onnx | 
+(20-11-18 11:02:46) | Inference Server ON     | 127.0.0.1 | 
+(20-11-18 13:48:36) | Upload_Success      | lenet-1.onnx | 127.0.0.1 | C:\Users\qlqlx\PycharmProjects\ONNX_Registry_ver1_2\ONNX_Registry_ver1_2\onnx_folder\
+(20-11-18 13:49:10) | Upload_Success      | lenet-1.onnx | 127.0.0.1 | C:\Users\qlqlx\PycharmProjects\ONNX_Registry_ver1_2\ONNX_Registry_ver1_2\onnx_folder\
+(20-11-18 13:50:02) | Download_Success  | lenet-1.onnx | 
+(20-11-18 13:50:09) | Download_Success  | lenet-1_snn.onnx | 
+(20-11-18 13:50:18) | Upload_Success      | lenet-1.onnx | 127.0.0.1 | C:\Users\qlqlx\PycharmProjects\ONNX_Registry_ver1_2\ONNX_Registry_ver1_2\onnx_folder\
