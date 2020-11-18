@@ -4,5 +4,5 @@ Intelligent Component Registry web service for managing and using snn, dnn, and 
 # Install & Run
 ```
 $ pip3 install -r requirements.txt
-$ python3 onnx_manage_main.py
+$ python3 onnx_registry.py
 ```
