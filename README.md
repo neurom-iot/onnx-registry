@@ -3,7 +3,7 @@ Intelligent Component Registry web service for managing and using snn, dnn, and 
 
 registration, download, View Information including visualization tool Netron of onnx format model
 
-Return Inference result through RESTful API architecture
+Return Inference result through RESTful API
 
 
 # Install & Run
