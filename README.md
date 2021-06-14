@@ -5,6 +5,12 @@ registration, download, View Information including visualization tool Netron of 
 
 Return Inference result through RESTful API
 
+```
+$ python onnx_registry.py
+```
+onnx_registry.py : file upload, download, view onnx model, turn on the onnx inference server by button.
+
+In visualization page, client can download each .onnx model file stored in server. Also can see visualized model offer by NETRON.
 
 # Install & Run
 ```
