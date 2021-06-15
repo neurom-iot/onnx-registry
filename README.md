@@ -6,12 +6,27 @@ registration, download, View Information including visualization tool Netron of 
 Return Inference result through RESTful API
 
 ```
-$ python onnx_registry.py
+├── ONNX-registry
+|   ├── log_folder
+|   |   └── log.txt
+|   ├── model         
+|   ├── test_data
+|   ├── templates
+|   |   ├── mainpage.html                  
+|   |   ├── netron_wrapper.html              
+|   |   └── onnx_manager.html             
+|   ├── onnx_distinguish_run.py
+|   ├── onnx_inference_restapi.py    #Inference Server 
+|   ├── onnx_registry.py             #onnx registry web by FLASK
+|   ├── onnx_to_nengo_model.py  
+|   ├── requirements.txt
 ```
-### onnx_registry.py
-upload & download file, view onnx model, turn on the onnx inference server by button.
 
-파일 업로드하고 다운로드 할 수 있으며, 모델 목록을 확인 가능
+<br/>
+
+
+### onnx_registry.py
+파일 업로드, 모델 다운로드 및 모델 목록 확인
 
 버튼을 통해 onnx 추론 서버 on
 
@@ -21,19 +36,15 @@ upload & download file, view onnx model, turn on the onnx inference server by bu
 
 
 
-In visualization page, client can download each .onnx model file stored in server. Also a model visualized by NETRON can be seen.
 
-시각화 페이지에서 각 onnx 모델에 대한 정보를 볼 수 있고 서버에 저장된 모델을 다운받을 수 있습니다. 
+시각화 페이지에서 각 onnx 모델에 대한 정보를 볼 수 있고 서버에 저장된 모델을 다운
 
-NETRON으로 시각화된 모델을 볼 수 있다.
+NETRON으로 모델 시각화
 
 ![visualized](https://user-images.githubusercontent.com/71939195/121996925-72f79d80-cde4-11eb-8146-441215924664.PNG)
 
+<br/>
 
-
-```
-$ python onnx_inference_restapi.py
-```
 ### onnx_inference_restapi.py
 FLASK RESTful api를 통한 추론 결과 반환
 
