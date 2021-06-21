@@ -1,6 +1,5 @@
 import os
 import numpy as np
-
 from flask import Flask, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from werkzeug.utils import secure_filename
