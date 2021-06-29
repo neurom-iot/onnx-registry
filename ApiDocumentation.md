@@ -1,19 +1,23 @@
 # ONNX Inference
 
- ### quick guide
 
-model 폴더에 저장
+## model 폴더에 파일 저장
 ```
-curl -X POST -F "model=@{test_data}" http://0.0.0.0:5065/model/{model_name}
+curl -X POST -F "model=@{test_file}" http://0.0.0.0:5065/model/{model_name}
 ```
+## URI Parameters
 
-추론결과 
-
-## url
+|          Name          |       Description       |  Type |
+|------------------------|-------------------------|-------:|
+| <code>test_file<code>  | test_data 폴더 내의 파일 | string |
+| <code>model_name<code> | model 폴더 내의 파일     | string |
+ 
+# Reference Example
+### HTTP
 ```
-http://0.0.0.0:5065/
+POST http://0.0.0.0:5065/
 ```
-## request body 
+### Request body 
 (raw/json)
 ```
 {
@@ -22,7 +26,7 @@ http://0.0.0.0:5065/
 }
 ```
 
-## Example Response
+### Sample Response
 ```
 {
   "result": "9"
@@ -38,9 +42,4 @@ http://0.0.0.0:5065/
 | <code>test_image<code> | test_data 폴더 내의 파일 | string |
 | <code>test_file<code>  | test_data 폴더 내의 파일 | string |
   
- 
-## Response
-|         Status         |       Description       |
-|------------------------|-------------------------|
-| 200 OK | result of a successful operation. |
  
