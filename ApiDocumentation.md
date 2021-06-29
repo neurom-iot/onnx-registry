@@ -2,7 +2,7 @@
 
 
 ## 1. model 폴더에 파일 저장하기
-### HTTP
+HTTP
 ```
 curl -X POST -F "model=@{test_file}" http://0.0.0.0:5065/model/{name}
 ```
@@ -17,7 +17,7 @@ curl -X POST -F "model=@{test_file}" http://0.0.0.0:5065/model/{name}
 
  
 # 2. Reference
-### HTTP
+HTTP
 ```
 POST http://0.0.0.0:5065/
 ```
