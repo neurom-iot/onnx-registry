@@ -1,8 +1,5 @@
 # ONNX Inference
 
-
-### quick guide
-
 ## 1. model 폴더에 파일 저장하기
 HTTP
 ```
