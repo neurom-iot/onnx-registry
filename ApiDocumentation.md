@@ -1,8 +1,9 @@
 # ONNX Inference
 
+
 ### quick guide
 
-## 1. model 폴더에 파일 저장
+## 1. model 폴더에 파일 저장하기
 HTTP
 ```
 curl -X POST -F "model=@{test_file}" http://0.0.0.0:5065/model/{name}
@@ -12,6 +13,7 @@ curl -X POST -F "model=@{test_file}" http://0.0.0.0:5065/model/{name}
 |          Name          |       Description       |  Type |
 |------------------------|-------------------------|-------:|
 | <code>test_file<code>  | test_data 폴더에 저장될 파일  | string |
+| <code>name<code>  | model 폴더내의 model  | string |
 
 
  
@@ -23,14 +25,14 @@ POST http://0.0.0.0:5065/
 ### Request Body Parameter
 (raw/json)
  
- 1. jpg
+case 1. test args : jpg
 ```
 {
   "model_name":"model/{model_name}",
   "test_image":"test_data/{test_image}"
 }
 ```
-  2. npy
+case 2. test args : npy
 ```
 {
   "model_name":"model/{model_name}",
