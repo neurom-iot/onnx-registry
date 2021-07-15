@@ -1,31 +1,7 @@
 # ONNX Inference REST API Reference
 
-
-## 1.(1) 모델 업로드
-- 모델 파일을 서버에 업로드 한다.
-
-HTTP
-```
-POST http://SERVER_ADDR/model/upload/{name}
-```
-### URI Parameters
-
-|          Name          |       Description       |  Type |
-|------------------------|-------------------------|-------:|
-| <code>name<code>  | 서버의 모델 폴더에 저장될 이름 | string |
-
-
-### Request Body
-|          Name          |       Description       |  Type |
-|------------------------|-------------------------|-------:|
-| <code>model_file<code>  | 업로드할 모델 파일  | string |
-
-### Response
-|          Name          |       Description       |  Type |
-|------------------------|-------------------------|-------:|
-| 200 OK  | 모델 업로드 성공  | string |
   
-## 1.(2) 모델 업로드
+## 1 모델 업로드
 - 모델 파일을 서버에 업로드 하고, json파일을 읽어 결과를 리턴받는다.
 
 HTTP
@@ -90,33 +66,6 @@ POST http://SERVER_ADDR/model/predict/{name}
 # Example
 
 ## 모델 업로드하고 추론하기
-### 모델 업로드
-```
-curl -X POST -F "model_file=@{knn_iris.onnx}" http://SERVER_ADDR/model/upload/knn_iris
-``` 
-- URI 파라미터
-  - name = knn_iris
-- Body 파라미터
-  - model_file = knn_iris.onnx 파일 컨텐츠 
-- Response
-  ```
-  200 OK
-  ```
-  
-## 모델 업로드하고 json 파일 읽기
-### 모델 업로드
-```
-curl -X POST -F "model_file=@{knn_iris.onnx}" -F "jsonf=@{ex.json}" http://SERVER_ADDR/model/upload/knn_iris
-``` 
-- URI 파라미터
-  - name = knn_iris
-- Body 파라미터
-  - model_file = knn_iris.onnx 파일 컨텐츠 
-  - jsonf = ex.json 파일
-- Response
-  ```
-  200 OK
-  ```
   
 ### 모델 추론
 ```
@@ -137,3 +86,18 @@ curl -X POST -F "input_data=@{input.jpg}" http://SERVER_ADDR/model/predict/knn_i
   }
   ```
 
+  
+### 모델 업로드 및 json 파일 읽기
+```
+curl -X POST -F "model_file=@{knn_iris.onnx}" -F "jsonf=@{ex.json}" http://SERVER_ADDR/model/upload/knn_iris
+``` 
+- URI 파라미터
+  - name = knn_iris
+- Body 파라미터
+  - model_file = knn_iris.onnx 파일 컨텐츠 
+  - jsonf = ex.json 파일
+- Response
+  ```
+  200 OK
+  ```
+  
