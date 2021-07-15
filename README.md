@@ -5,7 +5,13 @@ registration, download, View Information including visualization tool Netron of 
 
 Return Inference result through RESTful API
 
-### directory structure
+# Install & Run
+```
+$ pip3 install -r requirements.txt
+$ python3 onnx_registry.py
+```
+
+# directory structure
 ```
 ├── ONNX-registry
 |   ├── log_folder
@@ -26,7 +32,7 @@ Return Inference result through RESTful API
 <br/>
 
 
-## onnx_registry.py
+# onnx_registry.py
 파일 업로드, 모델 다운로드 및 모델 목록 확인
 
 버튼을 통해 onnx 추론 서버 on
@@ -46,7 +52,7 @@ NETRON으로 모델 시각화
 
 <br/>
 
-## onnx_inference_restapi.py
+# onnx_inference_restapi.py
 FLASK RESTful api를 통한 추론 결과 반환
 
 ![dosik](https://user-images.githubusercontent.com/71939195/121997231-fca76b00-cde4-11eb-9b65-2af22c5cbfa7.PNG)
@@ -59,9 +65,3 @@ FLASK RESTful api를 통한 추론 결과 반환
  
  -> postman agent를 통한 iris 데이터 추론 결과 반환 예시
 
-
-# Install & Run
-```
-$ pip3 install -r requirements.txt
-$ python3 onnx_registry.py
-```
