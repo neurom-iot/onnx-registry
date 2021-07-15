@@ -60,6 +60,28 @@ POST http://SERVER_ADDR/model/predict/{name}
 | result  | 추론 결과  | string |
 
 ## 3. 모델 다운로드
+- 서버에 있는 모델 파일을 다운로드 한다.
+HTTP
+```
+POST http://SERVER_ADDR/model/download/{name}
+```
+### URI Parameters
+
+|          Name          |       Description       |  Type |
+|------------------------|-------------------------|-------:|
+| <code>name<code>  | 서버의 모델 폴더내의 파일 | string |
+
+
+### Request Body
+|          Name          |       Description       |  Type |
+|------------------------|-------------------------|-------:|
+| <code>model_file<code>  | 다운로드할 모델 파일  | string |
+
+### Response
+|          Name          |       Description       |  Type |
+|------------------------|-------------------------|-------:|
+| 200 OK  | 모델 다운로드 성공  | string |
+
 
 ## 4. 모델 사용 통계
 
