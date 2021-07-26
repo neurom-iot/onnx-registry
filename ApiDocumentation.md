@@ -61,6 +61,7 @@ POST http://SERVER_ADDR/model/predict/{name}
 
 ## 3. 모델 다운로드
 - 서버에 있는 모델 파일을 다운로드 한다.
+
 HTTP
 ```
 POST http://SERVER_ADDR/model/download/{name}
