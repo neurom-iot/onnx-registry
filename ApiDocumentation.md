@@ -123,4 +123,14 @@ curl -X POST -F "model_file=@{knn_iris.onnx}" -F "jsonf=@{ex.json}" http://SERVE
   ```
   200 OK
   ```
+### 모델 다운로드
+```
+curl -LO http://172.30.1.12:5065/download/knn_iris.onnx
+``` 
+- URI 파라미터
+  - name = knn_iris
+- Response
+  ```
+  200 OK
+  ```
   
