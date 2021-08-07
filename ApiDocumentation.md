@@ -64,7 +64,7 @@ POST http://SERVER_ADDR/model/predict/{name}
 
 HTTP
 ```
-POST http://SERVER_ADDR/model/download/{name}
+GET http://SERVER_ADDR/model/download/{name}
 ```
 ### URI Parameters
 
