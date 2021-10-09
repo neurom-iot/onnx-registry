@@ -27,37 +27,15 @@ Return Inference result through RESTful API
 
 
 ## onnx_registry.py
-파일 업로드, 모델 다운로드 및 모델 목록 확인
+파일 업로드,다운로드 및 모델 목록 확인
 
-버튼을 통해 onnx 추론 서버 on
-
-![registry](https://user-images.githubusercontent.com/71939195/121996644-ee0c8400-cde3-11eb-8926-f9da46122ee5.PNG)
+![new_ui](https://user-images.githubusercontent.com/71939195/136668065-3a9de036-9222-4081-a402-43df438b4988.png)
 
 
+각 컴포넌트의 package.json에서 논리적 컴포넌트 이름, 식별자, 키워드, 컴포넌트 생성 저자등의 정보 parsing
 
+![detail](https://user-images.githubusercontent.com/71939195/136668243-cfcefb79-cabd-41e2-b5e9-868f30f11b01.png)
 
-
-
-시각화 페이지에서 각 onnx 모델에 대한 정보를 볼 수 있고 서버에 저장된 모델을 다운
-
-NETRON으로 모델 시각화
-
-![visualized](https://user-images.githubusercontent.com/71939195/121996925-72f79d80-cde4-11eb-8146-441215924664.PNG)
-
-<br/>
-
-## onnx_inference_restapi.py
-FLASK RESTful api를 통한 추론 결과 반환
-
-![dosik](https://user-images.githubusercontent.com/71939195/121997231-fca76b00-cde4-11eb-9b65-2af22c5cbfa7.PNG)
-
-추론 결과 반환 방법
- - REST API curl command.txt 파일의 curl command를 통한 추론 결과 반환
- - postman agent 
- 
- ![postman](https://user-images.githubusercontent.com/71939195/121997720-c1596c00-cde5-11eb-81f8-758d082cd702.png)
- 
- -> postman agent를 통한 iris 데이터 추론 결과 반환 예시
 
 
 # Install & Run
