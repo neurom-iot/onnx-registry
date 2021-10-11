@@ -7,13 +7,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 
-<style type="text/css">
-body{margin-top:20px; background:#eee; }
+    <style type="text/css">
+body{margin-top:30px; background:#eee; }
 
-.file-manager, .Log-manager, .fileupload-manager, filedownload-manager, filevisualization-manager{
+.file-manager, .Log-manager, filedownload-manager, filevisualization-manager{
   list-style: none outside none;
   margin-bottom:10px; margin-top:10px; padding: 0;
   vertical-align:middle;
+}
+
+#upload{
+    background-color: rgba(0, 0, 0, .05);
 }
 
 .btn_div{
@@ -50,62 +54,155 @@ a:hover{
   border-width: 1px 0;
 }
 
+code {
+    background-color: #eee;
+    border-radius: 3px;
+    padding: 1 5px;
+}
+
+.search_window{
+        display: inline-block;
+        width: 1000px;
+        padding: 5px;
+        background: #ffffff;
+    }
+#search{
+        width: 400px;
+        font-family: "Fira Mono", "Andale Mono", "Consolas", monospace;
+        font-size: 16px;
+        letter-spacing: 0px;
+        border: none;
+        outline: unset;
+        height: 40px;
+        padding-left: 10px;
+        border-radius: 0;
+        width: calc(100% - 15px);
+        background: #ffffff;
+    }
+
+.click, .upload-botton{
+        display: inline-block;
+        font-family: 'Poppins';
+        padding: 15px;
+        width: 100px;
+        color : white;
+        border:none;
+        letter-spacing: 0.3px;
+        font-weight: bold;
+        font-size: 15px;
+        background-color: #231f20;
+    }
+
+    aside#aside, div.file-manager, header#header { padding:10px; }
+
+    section#contain::after { content:""; display:block; clear:both; }
+    section#upload_area::after { content:""; display:block; clear:both; }
+
+details { margin:5px 0 10px; }
+details > summary { background:#444; color:#fff; padding:10px; outline:0; border-radius:5px; cursor:pointer; transition:background 0.5s; text-align:left; box-shadow: 1px 1px 2px gray;}
+details > summary::-webkit-details-marker { background:#444; color:#fff; background-size:contain; transform:rotate3d(0, 0, 1, 90deg); transition:transform 0.25s;}
     </style>
 </head>
 
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
-    <div class="box-content">
-        <div><h3 class="icr_title">Intelligent Component Registry</h3></div>
+        <header id="header">
+        <div class="position-relative overflow-hidden text-center bg-light">
+            <h2 class="display-4 fw-normal" style="font-family: Verdana"><b>Intelligent Component Registry</b></h2></div>
         <br>
-        <div class="fileupload-manager">
-            <h4>File Upload</h4>
+        <!--<div>
+            <button type="submit" class="btn btn-primary btn-block"
+                    onclick="window.location.href='{{ url_for( 'upload' ) }}';">move to upload page
+            </button>
+        </div> -->
+
+        <form class = "search-engine">
+            <div class = div1>
+                <span class ='search_window'>
+                    <input onkeyup="filter()" id="search" type="text"/>
+                </span>
+                <button class="click" type="submit">Search</button>
+            </div>
+        </form>
+        </header>
+
+        <br>
+        <div class="box-content">
+        <section id = "upload_area">
+        <details>
+            <summary>Click to Upload</summary>
+        <div class="fileupload-manager text-center"><br>
+            <div id="upload">
             <form action="/" method = "POST" enctype = "multipart/form-data"/>
                 <div style="float:left; margin-right:10px;"><input type = "file" name = "file" size="30"/></div>
-                <div style="float:left; width:140px; margin-left:10px;"><button class="btn btn-primary btn-block"> Upload File</button></div>
+                <div style="float:left; width:140px; margin-left:10px;"><button class="upload-botton" style="padding:5px">Upload</button></div>
             </form>
-        </div>
-        <br><br>
-<!-- 파일 목록 출력, 다운로드 기능 포함 -->
-        <div class="file-manager">
-            <h4>File Folders</h4>
-            <form action="/download_logupdate">
-            <table class="table" width="100%" style='margin:auto'>
-               <thead>
-                    <tr><th style="text-align:left;">파일명</th><th style="text-align:left;">Latest Modified Time</th><th style="text-align:left;">File Size</th><tr>
-               </thead>
-               <tbody>
-                   {% for name, latest_time, size in zip(file_list, file_latest_time, file_size) %}
-                   <tr>
-                       <td><a href="{{ url_for('visualization',filename = name) }}">{{ name }}</a></td>
-                       <td>{{ latest_time }}</td>
-                       <td>{{ size }}</td>
-                   </tr>
-                   {% endfor %}
-               </tbody>
-            </table>
-            </form>
-        </div> <!-- File-manager -->
+        </div></div>
+        </details>
+        </section>
         <br>
 
-        <!-- 파일 추론 구현 -->
-        <div class="filevisualization-manager">
-            <h4>ONNX Inference</h4>
-            <form action = "/onnxinference" method = "POST" class="form-inline">
-                <div style="float:left; width:170px; margin-left:10px;"><button name="file" class="btn btn-primary btn-block">Inference Server ON</button></div>
-            </form>
-        </div>
-        <br><br>
+        <section id="contain">
+        <!-- 파일 목록 출력, 다운로드 기능 포함 -->
+        <div class="file-manager">
+            <form action="/download_logupdate">
+                <table class="table" width="100%" style='margin:auto'>
+                    <thead>
+                    <tr>
+                        <!--
+                        <th style="text-align:left;">파일명</th>
+                        <th style="text-align:left;">Latest Modified Time</th>
+                        <th style="text-align:left;">File Size</th>-->
+                    <tr>
+                    </thead>
+                    <tbody>
+                    {% for name, latest_time, size, i in zip(zip_file_list, zip_file_latest_time, zip_file_size, range(0, len)) %}
+                    <tr>
+                        <td>
+                            <div class="item">
+                            <a href="{{ url_for('visualization', filename = name) }}"><h3><span class="name">{{ name }}</span></h3></a>
+                            <br>{{ latest_time }}<br>{{ size }}<br>
+                            <b>{{ author_list[i] }}</b> published <br><br>
+                            <code>{{ keywords_list[i] }} </code><br><br>
+                            </div>
+                        </td>
 
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div> <!-- File-manager -->
+
+        </section>
         <!-- LOGS 관리 -->
         <div class="Log-manager">
-            <h4>Logs</h4>
+            <h3>Logs</h3>
             <div class="log list">
                 <textarea id="myTxtArea" class="form-control" rows="15" readonly style="text-align:left;">{% for log in log_list %}{{log}}{% endfor %}</textarea>
             </div>
         </div> <!-- Log-manager -->
     </div> <!-- box-content -->
 </div>
+
+<script type="text/javascript">
+        function filter(){
+
+          var value, name, item, i;
+
+          value = document.getElementById("search").value.toUpperCase();
+          item = document.getElementsByClassName("item");
+
+          for(i=0;i<item.length;i++){
+            name = item[i].getElementsByClassName("name");
+            if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
+              item[i].style.display = "flex";
+            }else{
+              item[i].style.display = "none";
+            }
+          }
+        }
+  </script>
 </body>
 </html>
