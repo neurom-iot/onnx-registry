@@ -10,8 +10,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style type="text/css">
-body{margin-top:20px; background:#eee; }
-
+body{
+    margin-top:20px; background:#eee;
+    }
+.content{
+    font-family : "Lucida Console";
+     font-size: medium;
+     margin-left: 10px;
+     margin-right: 10px;
+     
+}
 .file-manager, .Log-manager, .fileupload-manager, filedownload-manager, filevisualization-manager{
   list-style: none outside none;
   margin-bottom:10px; margin-top:10px; padding: 0;
@@ -68,38 +76,56 @@ a:hover{
 <div class="container">
     <div class="box-content">
         <div style="">
-            <div style="display: inline-block;"><h3 class="icr_title">Intelligent Component Registry</h3></div>
+            <div style="display: inline-block;"><h1 class="icr_title"><b>{{model_name}}</b></h1></div>
             <div class="download_btn" style="display: inline-block;">
-                <a class="fa fa-download" style="color:black;" href="{{ url_for('download',filename = models_name) }}"> Download </a>
+                <a class="fa fa-download" style="color:black;" href="{{ url_for('download', filename = model_name ) }}"> Download </a>
             </div>
         </div>
         <br>
+        <div class="content">
+        <p><h2><b>{{name}}</b></h2></p><hr>
+        {{version}}
+        <br><br>
+
+        <h2><b>Author</b></h2><hr>
+        <p>Component Creation Author : <b>{{ author }}</b></p><br>
+
+        <h2><b>Keywords</b></h2><hr>
+        <p>Component search keywords<br>
+            <b>{{ keywords }}</b></p><br>
+
+        <h2><b>License</b></h2><hr>
+        <p>Component License : <b>{{ license }}</b></p>
+</div>
+        <br><br><br><br>
+
         <ul class="list-group">
 
            <li class ='list-group-item active'>
                 <div class="md-v-line"></div>
-                    <font size="4em"> Onnx_Model </font>&nbsp;</li>
+                    <font size="4em"> package.json </font>&nbsp;</li>
 
             <li class ='list-group-item '>
                 <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
-                    Model_name: {{models_name}}</li>
-
+                    model Name: {{model_name}}</li>
+            <li class ='list-group-item '>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                    Name: {{name}}</li>
+            <li class ='list-group-item '>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                    Version: {{version}}</li>
+            <li class ='list-group-item '>
+                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
+                    Description: {{description}}</li>
             <li class ='list-group-item'>
                 <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
-                    Model_TYPE: {{models_type}} </li>
+                Author : {{author}} </li>
             <li class ='list-group-item'>
                 <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
-                Lastest modified :{{last_time}} </li>
-
+                Keywords:{{keywords}} </li>
             <li class ='list-group-item'>
                 <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
-                File Size : {{files_size}} </li>
-            <li class ='list-group-item'>
-                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
-                INPUT_TYPE : {{input_type}}</li>
-            <li class ='list-group-item'>
-                <div class="md-v-line"></div><i class="glyphicon glyphicon-minus"></i>
-                OUTPUT_TYPE  {{output_type}} </li>
+                license: {{license}} </li>
 
         </ul>
 
