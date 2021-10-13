@@ -99,9 +99,6 @@ def post():
 
     return redirect('/')
 
-@app.route('/upload')
-def upload():
-    return render_template('send.html')
 
 # download 기능
 @app.route('/download/<filename>', methods=['GET', 'POST'])
