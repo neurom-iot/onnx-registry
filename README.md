@@ -1,5 +1,10 @@
-# onnx-registry
+# n3ml-onnx
 
+## How to use
+
+
+# onnx-registry
+- 지능형 컴포넌트 레지스트리
 
 ### directory structure
 ```
@@ -34,7 +39,7 @@
 
 
 
-# Install & Run
+## Install & Run
 ```
 $ pip3 install -r requirements.txt
 $ python3 onnx_registry.py
