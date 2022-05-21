@@ -1,8 +1,33 @@
 # n3ml-onnx
 
 ## How to use
-
-
+* ## SoftLIF -> ONNX
+    #### Dense Network
+    ```
+    $ python softlif_dense_export.py
+    $ python softlif_dense_export.py --name=path(optinal)
+    ```
+    #### Convolution Network
+    ```
+    $ python softlif_conv_export.py
+    $ python softlif_conv_export.py --name=path(optinal)
+    ```
+* ## ONNX -> SoftLIF
+    #### Dense Network
+    ```
+    $ python softlif_dense_import.py
+    $ python softlif_dense_import.py --name=path(optinal)
+    ```
+    #### Convolution Network
+    ```
+    $ python softlif_conv_import.py
+    $ python softlif_conv_import.py --name=path(optinal)
+    ```
+* ## SoftLIF -> Loihi
+    ```
+    $ python softlif_dense_export.py
+    $ python softlif_dense_loihi_import.py --name=path(optinal)
+    ```
 # onnx-registry
 - 지능형 컴포넌트 레지스트리
 
